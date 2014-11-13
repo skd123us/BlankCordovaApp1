@@ -1,0 +1,1 @@
+Testing the microsoft cordova application
