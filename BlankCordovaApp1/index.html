@@ -105,8 +105,13 @@
 	    });
 
 	    $(document).on("pagecreate", "#haveAccount", function () {
-	        populateFromStorage();
-	        ControlLoginPassword(localStorage.getItem("isPin") == "1");
+	        //if (isStoragePopulated()) {
+	        //    populateFromStorage();
+	        //    ControlLoginPassword(localStorage.getItem("isPin") == "1");
+	        //}
+            //else {
+	            ControlLoginPassword(true);
+	        //}
 	    });
 
 	    $(document).on("pagecreate", "#choose", function () {
@@ -126,6 +131,8 @@
 	        }
 	        else {
 	            $("#login-login").show();
+	            $("#finalLogin").val(
+                                   localStorage.getItem("form-userLogin"));
 	            $("#login-pin").hide();
 	        }
 	    });
@@ -204,7 +211,6 @@
 		</div><!-- /footer -->
 	</div><!-- /page -->	
 <!-- -------------------------------------------------------------------------------------------------- -->
-
 	<div id="choose" data-role="page">
 		<div data-role="header">
 			<h1>OfficeClip Mobile</h1>
@@ -221,7 +227,6 @@
 		</div><!-- /content -->
 	</div><!-- /page -->
 <!-- -------------------------------------------------------------------------------------------------- -->
-
 	<div id="haveAccount" data-role="page">
 		<div data-role="header">
 			<h1>OfficeClip Mobile</h1>
@@ -233,7 +238,7 @@
 					cols="40" 
 					rows="2"  
 					name="text-url" 
-					id="text-url">http://localhost/ocwap/mobile/default.aspx					
+					id="text-url">https://www.officeclip.com/mobile/default.aspx					
 				</textarea>
 
 				<legend>Credentials:</legend>
@@ -260,13 +265,13 @@
 				
 				<div style="margin-left:30px">
 					<div style="float:left">
-					<input type="text" name="pin1" id="pin1" size="5" maxlength="5" value="39225">
+					<input type="text" name="pin1" id="pin1" size="5" maxlength="5">
 					</div>
 					<div style="float:left">
 					&nbsp;
 					</div>
 					<div style="float:left">
-					<input type="text" name="pin2" id="pin2" size="5" maxlength="5" value="20071">
+					<input type="text" name="pin2" id="pin2" size="5" maxlength="5">
 					</div>
 					<div style="float:left; margin:5px 0 0 5px">
 						<a 
