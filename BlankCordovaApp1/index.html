@@ -12,302 +12,122 @@
 		}
 	</style>
 	<script type="text/javascript">
-	    function ControlLoginPassword(disable) {
-	        if (disable) {
-	            $("#pin1").textinput("disable");
-	            $("#pin2").textinput("disable");
-	            $("#userLogin").textinput("enable");
-	            $("#password").textinput("enable");
-	        }
-	        else {
-	            $("#pin1").textinput("enable");
-	            $("#pin2").textinput("enable");
-	            $("#userLogin").textinput("disable");
-	            $("#password").textinput("disable");
-	        }
-	    }
-
-	    function formSubmit() {
-	        var urlString = $("#text-url").val().replace("default.aspx", "shortCircuit.aspx");
-	        $("#formHaveAccount").attr("action", urlString);
-	        storeValues();
-	        $("#formHaveAccount").submit();
-	    }
-
-	    function formSubmit2() {
-	        if (isStoragePopulated()) {
-	            var url = localStorage.getItem("form-text-url");
-	            if (localStorage.getItem("isPin") == "1") {
-	                $("#finalPin1").val(localStorage.getItem("form-pin1"));
-	                $("#finalPin2").val(localStorage.getItem("form-pin2"));
-	            }
-	            var urlString = url.replace("default.aspx", "shortCircuit.aspx");
-	            $("#formLogin").attr("action", urlString);
-	            $("#formLogin").submit();
-	        }
-	    }
 
 	    function storeValues() {
 	        localStorage.setItem(
-                            "form-text-url",
+                            "formTextUrl",
                             $("#text-url").val());
-	        localStorage.setItem(
-                            "form-userLogin",
-                            $("#userLogin").val());
-	        localStorage.setItem(
-                            "form-pin1",
-                            $("#pin1").val());
-	        localStorage.setItem(
-                            "form-pin2",
-                            $("#pin2").val());
-	        var isPin = ($('#radio-choice-2').is(':checked')) ? "1" : "0";
-	        localStorage.setItem(
-                            "isPin",
-                            isPin);
+	    }
+
+	    function signIn() {
+	        location.href = localStorage.formTextUrl;
 	    }
 
 	    function clearValues() {
-	        localStorage.removeItem("form-text-url");
-	        localStorage.removeItem("form-userLogin");
-	        localStorage.removeItem("form-pin1");
-	        localStorage.removeItem("form-pin2");
-	        localStorage.removeItem("isPin");
+	        if (isStoragePopulated()) {
+	            localStorage.removeItem("formTextUrl");
+	        }
 	    }
 
 	    function isStoragePopulated() {
-	        return (localStorage.isPin != null);
+	        return (localStorage.formTextUrl != null);
 	    }
 
 	    function populateFromStorage() {
 	        if (isStoragePopulated()) {
 	            $("#text-url").val(
-                                   localStorage.getItem("form-text-url"));
-	            $("#userLogin").val(
-                                   localStorage.getItem("form-userLogin"));
-	            $("#password").val(
-                                   localStorage.getItem("form-password"));
-	            $("#pin1").val(
-                                   localStorage.getItem("form-pin1"));
-	            $("#pin2").val(
-                                   localStorage.getItem("form-pin2"));
+                                   localStorage.getItem("formTextUrl"));
 	        }
 	    }
 
-	    $(document).on("pagecreate", "#haveAccount", function () {
-	        $('input[name="credential"]').on("change", function () {
-	            if ($(this).val() == "login") {
-	                ControlLoginPassword(true);
-	            }
-	            else {
-	                ControlLoginPassword(false);
-	            }
-	        });
-	    });
-
-	    $(document).on("pagecreate", "#haveAccount", function () {
-	        //if (isStoragePopulated()) {
-	        //    populateFromStorage();
-	        //    ControlLoginPassword(localStorage.getItem("isPin") == "1");
-	        //}
-            //else {
-	            ControlLoginPassword(true);
-	        //}
-	    });
-
-	    $(document).on("pagecreate", "#choose", function () {
+	    $(document).on("pagecreate", "#setUrl", function () {
 	        clearValues();
 	    });
 
-	    $(document).on("pagecreate", "#opening", function () {
-	        if (localStorage.getItem("form-text-url")) {
-	            $.mobile.changePage("#login");
-	        }
+	    $(document).on("pagecreate", "#choose", function () {
 	    });
 
-	    $(document).on("pagecreate", "#login", function () {
-	        if (localStorage.getItem("isPin") == "1") {
-	            $("#login-login").hide();
-	            $("#login-pin").show();
-	        }
-	        else {
-	            $("#login-login").show();
-	            $("#finalLogin").val(
-                                   localStorage.getItem("form-userLogin"));
-	            $("#login-pin").hide();
+	    $(document).on("pagecreate", "#opening", function () {
+	        if (isStoragePopulated()) {
+	            $.mobile.changePage("#choose");
 	        }
 	    });
 
 	</script>
 </head>
-<body>
-	<div id="opening" data-role="page">
-		<div data-role="header">
-			<h1>OfficeClip Mobile</h1>
-		</div><!-- /header -->
-		<div role="main" class="ui-content">
-		    <p>
-		        OfficeClip Mobile provides smartphone access to its suite of business
-		        software to manage contacts, customers, projects, support issues and 
-		        employees.
-		    </p>
-            <p>
-		    The following applications are supported:
+    <body>
+        <!-- -------------------------------------------------------------------------------------- -->
+        <div id="opening" data-role="page">
+            <div data-role="header">
+                <h1>OfficeClip Mobile</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+                <p>
+                    OfficeClip Mobile provides smartphone access to its suite of business
+                    software. OfficeClip is used by thousands of companies to manage contacts, customers, projects, timesheets, expenses, support issues and 
+                    invoices.
                 </p>
-				<ul>
-					<li>Anouncements</li>
-					<li>Contacts</li>
-					<li>Accounts</li>
-					<li>Tasks</li>
-					<li>Notes</li>					
-					<li>Timesheets</li>
-					<li>Expenses</li>
-					<li>Issue Tracker</li>
-					<li>Invoices</li>
-				</ul>
-		</div><!-- /content -->
-		<div data-role="footer">
-			<a href="#choose" 
-			style="margin-right:10px;"
-			class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">Next</a>
-		</div><!-- /footer -->
-	</div><!-- /page -->
-<!-- -------------------------------------------------------------------------------------------------- -->
-	<div id="login" data-role="page">
-		<div data-role="header">
-			<h1>OfficeClip Mobile</h1>
-		</div><!-- /header -->
-		<div role="main" class="ui-content">
-			<form id="formLogin" method="post">
-                <div>
-                    <label>Welcome to OfficeClip</label>
-                </div>
-				<div style="margin-left:30px" id="login-login">
-					<label for="userLogin">Login:</label>
-					<input type="text" name="userLogin" id="finalLogin"/>
-					<label for="password">Password:</label>
-					<input type="password" name="password" id="finalPassword" autocomplete="off"/>
-				</div>
-                <div id="login-pin">
-                    <input type="hidden" name="pin1" id="finalPin1"/>
-                    <input type="hidden" name="pin2" id="finalPin2"/>
-                    Press the Submit button to Login
-                </div>
-			</form>
-		</div><!-- /content -->
-		<div data-role="footer">
-			<a 
-				href="#choose" 
-				style="margin-left:10px;"
-				class="ui-btn ui-icon-gear ui-corner-all ui-btn-icon-left">
-				Setup
-			</a>
-			<a 
-				data-role="button"
-				style="margin-right:10px;"
-				onclick="formSubmit2();"
-				class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">
-				Submit
-			</a>
-		</div><!-- /footer -->
-	</div><!-- /page -->	
-<!-- -------------------------------------------------------------------------------------------------- -->
-	<div id="choose" data-role="page">
-		<div data-role="header">
-			<h1>OfficeClip Mobile</h1>
-		</div><!-- /header -->
-		<div role="main" class="ui-content">
-			<a href="#haveAccount" 			
-			class="ui-btn ui-corner-all">
-				Sign In
-			</a>
-			<a href="#" 			
-			class="ui-btn ui-corner-all">
-				Register New Account
-			</a>
-		</div><!-- /content -->
-	</div><!-- /page -->
-<!-- -------------------------------------------------------------------------------------------------- -->
-	<div id="haveAccount" data-role="page">
-		<div data-role="header">
-			<h1>OfficeClip Mobile</h1>
-		</div><!-- /header -->
-		<div role="main" class="ui-content">
-			<form id="formHaveAccount" method="post">
-				<label for="text-url">Url:</label>
-				<textarea 
-					cols="40" 
-					rows="2"  
-					name="text-url" 
-					id="text-url">https://www.officeclip.com/mobile/default.aspx					
+                <p>
+                    It integrates with Google Contacts, Google Calendar, Outlook, QuickBooks, Sage 50, ADP and
+                    other systems.
+                </p>
+                <p>
+                    It is available in two editions:
+                    <ol>
+                        <li>Basic - Free for 10 users</li>
+                        <li>Enterprise - Has all the advanced features. See the <a href="http://www.officeclip.com/web/pricing/Main.html">feature page</a> for details.
+                    </ol>
+                </p>
+            </div><!-- /content -->
+            <div data-role="footer">
+                <a href="#setUrl" 
+                   style="margin-right:10px;"
+                   class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">Next</a>
+            </div><!-- /footer -->
+        </div><!-- /page -->
+        <!-- -------------------------------------------------------------------------------------------------- -->
+        <div id="choose" data-role="page">
+            <div data-role="header">
+                <h1>OfficeClip Mobile</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+                 <a 
+                    data-role="button"
+                    onclick="signIn();"
+                   class="ui-btn ui-corner-all">
+                    Sign In
+                </a>
+                <a href="#setUrl" 			
+                   class="ui-btn ui-corner-all">
+                    Setup
+                </a>
+            </div><!-- /content -->
+        </div><!-- /page -->
+        <!-- -------------------------------------------------------------------------------------------------- -->
+        <div id="setUrl" data-role="page">
+            <div data-role="header">
+                <h1>OfficeClip Mobile</h1>
+            </div><!-- /header -->
+            <div role="main" class="ui-content">
+                <form id="formHaveAccount" method="post">
+                    <label for="text-url">Url:</label>
+                    <textarea 
+                        cols="40" 
+                        rows="2"  
+                        name="text-url" 
+                        id="text-url">https://www.officeclip.com/mobile/default.aspx					
 				</textarea>
-
-				<legend>Credentials:</legend>
-				<input 
-					type="radio" 
-					name="credential" 
-					id="radio-choice-1"
-					checked="checked"
-					value="login">
-				<label for="radio-choice-1">Login and Password</label>
-				<div style="margin-left:30px">
-					<label for="userLogin">Login:</label>
-					<input type="text" name="userLogin" id="userLogin"/>
-					<label for="password">Password:</label>
-					<input type="password" name="password" id="password" autocomplete="off"/>
-				</div>					
-				<input 
-					type="radio" 
-					name="credential" 
-					id="radio-choice-2"
-					value="pin">
-				<label for="radio-choice-2">Mobile Pin
-				</label>
-				
-				<div style="margin-left:30px">
-					<div style="float:left">
-					<input type="text" name="pin1" id="pin1" size="5" maxlength="5">
-					</div>
-					<div style="float:left">
-					&nbsp;
-					</div>
-					<div style="float:left">
-					<input type="text" name="pin2" id="pin2" size="5" maxlength="5">
-					</div>
-					<div style="float:left; margin:5px 0 0 5px">
-						<a 
-							href="#popupInfo" 
-							data-rel="popup" 
-							data-transition="pop" 
-							class="my-tooltip-btn ui-btn ui-alt-icon ui-nodisc-icon ui-btn-inline ui-icon-info ui-btn-icon-notext" title="Learn more">Learn more					
-						</a>
-					</div>
-				</div>
-				<div 
-					data-role="popup" 
-					id="popupInfo" 
-					class="ui-content" 
-					data-theme="a" 
-					style="max-width:350px;">
-					<p>To get the mobile pin login to OfficeClip with desktop browser, click on your picture
-					at the top right and then click on the Mobile button</p>
-				</div>
-			</form>
-		</div><!-- /content -->
-		<div data-role="footer">
-			<a 
-				href="#choose" 
-				style="margin-left:10px;"
-				class="ui-btn ui-icon-arrow-l ui-corner-all ui-btn-icon-left">
-				Prev
-			</a>
-			<a 
-				data-role="button"
-				style="margin-right:10px;"
-				onclick="formSubmit();"
-				class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">
-				Submit
-			</a>
-		</div><!-- /footer -->
-	</div><!-- /page -->	
-</body>
+                </form>
+            </div><!-- /content -->
+            <div data-role="footer">
+                <a 
+                    data-role="button"
+                    onclick="storeValues();"
+                    style="margin-right:10px;"
+                    class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">
+                    Submit
+                </a>
+            </div><!-- /footer -->
+        </div><!-- /page -->	
+    </body>
 </html>
