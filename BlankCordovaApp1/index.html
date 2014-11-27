@@ -17,6 +17,7 @@
 	        localStorage.setItem(
                             "formTextUrl",
                             $("#text-url").val());
+	        location.href = "#choose";
 	    }
 
 	    function signIn() {
@@ -59,7 +60,7 @@
         <!-- -------------------------------------------------------------------------------------- -->
         <div id="opening" data-role="page">
             <div data-role="header">
-                <h1>OfficeClip Mobile</h1>
+                <h1>OfficeClip</h1>
             </div><!-- /header -->
             <div role="main" class="ui-content">
                 <p>
@@ -88,7 +89,7 @@
         <!-- -------------------------------------------------------------------------------------------------- -->
         <div id="choose" data-role="page">
             <div data-role="header">
-                <h1>OfficeClip Mobile</h1>
+                <h1>OfficeClip</h1>
             </div><!-- /header -->
             <div role="main" class="ui-content">
                  <a 
@@ -106,18 +107,26 @@
         <!-- -------------------------------------------------------------------------------------------------- -->
         <div id="setUrl" data-role="page">
             <div data-role="header">
-                <h1>OfficeClip Mobile</h1>
+                <h1>OfficeClip</h1>
             </div><!-- /header -->
             <div role="main" class="ui-content">
-                <form id="formHaveAccount" method="post">
-                    <label for="text-url">Url:</label>
-                    <textarea 
-                        cols="40" 
-                        rows="2"  
-                        name="text-url" 
-                        id="text-url">https://www.officeclip.com/mobile/default.aspx					
+               <!-- <form id="formHaveAccount" method="post">-->
+                    <label for="text-url">OfficeClip Url:</label>
+                <textarea 
+                    cols="40" 
+                    rows="2"  
+                    name="text-url" 
+                    id="text-url">https://www.officeclip.com/mobile/default.aspx					
 				</textarea>
-                </form>
+                <p>
+                    To find your customized url:
+                </p>
+                <ol>
+                    <li>Login to OfficeClip on a desktop browser</li>
+                    <li>Click on the picture at top right</li>
+                    <li>Click the Mobile button</li>
+                </ol>
+                <!-- </form> -->
             </div><!-- /content -->
             <div data-role="footer">
                 <a 
