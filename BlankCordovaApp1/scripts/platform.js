@@ -1,7 +1,7 @@
 ﻿$(document).on('deviceready', function () {
-    alert("entered platform.js");
+    alert("windows.device: " + window.device);
+    alert("windows.device.version: " + window.device.version);
     if (window.device && parseFloat(window.device.version) >= 7.0) {
-        alert("found ios");
         $('body').addClass('iOS7');
     }
 });
