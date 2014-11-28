@@ -54,6 +54,15 @@
 	        }
 	    });
 
+        function onDeviceReady() {
+            if(navigator.userAgent.match(/iPhone OS 7/)) {
+                document.write('<style type="text/css">body{-webkit-transform: translate3d(0,20px,0)}</style>');
+            }
+        }
+
+
+        document.addEventListener('deviceready', onDeviceReady, false);
+
 	</script>
 </head>
     <body>
