@@ -1,17 +1,20 @@
-﻿<!DOCTYPE html> 
+﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>OfficeClip Mobile</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="./css/jquery.mobile-1.4.4.min.css" />
-	<script src="./scripts/frameworks/jquery-1.11.1.min.js"></script>
-	<script src="./scripts/frameworks/jquery.mobile-1.4.4.min.js"></script>
-	<style type="text/css">
-		.ui-state-disabled {
-			opacity: 0.3;
-		}
-	</style>
-	<script type="text/javascript">
+    <title>OfficeClip Mobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./css/jquery.mobile-1.4.4.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/platform.css" />
+    <script type="text/javascript" src="scripts/platform.js"></script>
+    <script src="./scripts/frameworks/jquery-1.11.1.min.js"></script>
+    <script src="./scripts/frameworks/jquery.mobile-1.4.4.min.js"></script>
+    <style type="text/css">
+        .ui-state-disabled {
+            opacity: 0.3;
+        }
+    </style>
+    <script type="text/javascript">
 
 	    function storeValues() {
 	        localStorage.setItem(
@@ -54,101 +57,87 @@
 	        }
 	    });
 
-        //$(document).on('deviceready', function() {
-        $(document).ready(function() {
-            var iOS7 = window.device
-                && window.device.platform
-                && window.device.platform.toLowerCase() == "ios"
-                && parseFloat(window.device.version) >= 7.0;
-            alert(iOS7);
-            if (iOS7) {
-                document.write('<style type="text/css">body{-webkit-transform: translate3d(0,20px,0)}</style>');
-            }
-        });
-
-	</script>
+    </script>
 </head>
-    <body>
-        <!-- -------------------------------------------------------------------------------------- -->
-        <div id="opening" data-role="page">
-            <div data-role="header">
-                <h1>OfficeClip</h1>
-            </div><!-- /header -->
-            <div role="main" class="ui-content">
-                <p>
-                    OfficeClip Mobile provides smartphone access to its suite of business
-                    software. OfficeClip is used by thousands of companies to manage contacts, customers, projects, timesheets, expenses, support issues and 
-                    invoices.
-                </p>
-                <p>
-                    It integrates with Google Contacts, Google Calendar, Outlook, QuickBooks, Sage 50, ADP and
-                    other systems.
-                </p>
-                <p>
-                    It is available in two editions:
-                    <ol>
-                        <li>Basic - Free for 10 users</li>
-                        <li>Enterprise - Has all the advanced features. See the <a href="http://www.officeclip.com/web/pricing/Main.html">feature page</a> for details.
-                    </ol>
-                </p>
-            </div><!-- /content -->
-            <div data-role="footer">
-                <a href="#setUrl" 
-                   style="margin-right:10px;"
-                   class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">Next</a>
-            </div><!-- /footer -->
-        </div><!-- /page -->
-        <!-- -------------------------------------------------------------------------------------------------- -->
-        <div id="choose" data-role="page">
-            <div data-role="header">
-                <h1>OfficeClip</h1>
-            </div><!-- /header -->
-            <div role="main" class="ui-content">
-                 <a 
-                    data-role="button"
-                    onclick="signIn();"
-                   class="ui-btn ui-corner-all">
-                    Sign In
-                </a>
-                <a href="#setUrl" 			
-                   class="ui-btn ui-corner-all">
-                    Setup
-                </a>
-            </div><!-- /content -->
-        </div><!-- /page -->
-        <!-- -------------------------------------------------------------------------------------------------- -->
-        <div id="setUrl" data-role="page">
-            <div data-role="header">
-                <h1>OfficeClip</h1>
-            </div><!-- /header -->
-            <div role="main" class="ui-content">
-               <!-- <form id="formHaveAccount" method="post">-->
-                    <label for="text-url">OfficeClip Url:</label>
-                <textarea 
-                    cols="40" 
-                    rows="2"  
-                    name="text-url" 
-                    id="text-url">https://www.officeclip.com/mobile/default.aspx					
-				</textarea>
-                <p>
-                    To find your customized url:
-                </p>
+<body>
+    <!-- -------------------------------------------------------------------------------------- -->
+    <div id="opening" data-role="page">
+        <div data-role="header">
+            <h1>OfficeClip</h1>
+        </div><!-- /header -->
+        <div role="main" class="ui-content">
+            <p>
+                OfficeClip Mobile provides smartphone access to its suite of business
+                software. OfficeClip is used by thousands of companies to manage contacts, customers, projects, timesheets, expenses, support issues and
+                invoices.
+            </p>
+            <p>
+                It integrates with Google Contacts, Google Calendar, Outlook, QuickBooks, Sage 50, ADP and
+                other systems.
+            </p>
+            <p>
+                It is available in two editions:
                 <ol>
-                    <li>Login to OfficeClip on a desktop browser</li>
-                    <li>Click on the picture at top right</li>
-                    <li>Click the Mobile button</li>
+                    <li>Basic - Free for 10 users</li>
+                    <li>Enterprise - Has all the advanced features. See the <a href="http://www.officeclip.com/web/pricing/Main.html">feature page</a> for details.
                 </ol>
-                <!-- </form> -->
-            </div><!-- /content -->
-            <div data-role="footer">
-                <a 
-                    data-role="button"
-                    onclick="storeValues();"
-                    style="margin-right:10px;"
-                    class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">
-                    Submit
-                </a>
-            </div><!-- /footer -->
-        </div><!-- /page -->	
-    </body>
+            </p>
+        </div><!-- /content -->
+        <div data-role="footer">
+            <a href="#setUrl"
+               style="margin-right:10px;"
+               class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">Next</a>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <div id="choose" data-role="page">
+        <div data-role="header">
+            <h1>OfficeClip</h1>
+        </div><!-- /header -->
+        <div role="main" class="ui-content">
+            <a data-role="button"
+               onclick="signIn();"
+               class="ui-btn ui-corner-all">
+                Sign In
+            </a>
+            <a href="#setUrl"
+               class="ui-btn ui-corner-all">
+                Setup
+            </a>
+        </div><!-- /content -->
+    </div><!-- /page -->
+    <!-- -------------------------------------------------------------------------------------------------- -->
+    <div id="setUrl" data-role="page">
+        <div data-role="header">
+            <h1>OfficeClip</h1>
+        </div><!-- /header -->
+        <div role="main" class="ui-content">
+            <!-- <form id="formHaveAccount" method="post">-->
+            <label for="text-url">OfficeClip Url:</label>
+            <textarea cols="40"
+                      rows="2"
+                      name="text-url"
+                      id="text-url">
+                https://www.officeclip.com/mobile/default.aspx
+            </textarea>
+            <p>
+                To find your customized url:
+            </p>
+            <ol>
+                <li>Login to OfficeClip on a desktop browser</li>
+                <li>Click on the picture at top right</li>
+                <li>Click the Mobile button</li>
+            </ol>
+            <!-- </form> -->
+        </div><!-- /content -->
+        <div data-role="footer">
+            <a data-role="button"
+               onclick="storeValues();"
+               style="margin-right:10px;"
+               class="ui-btn ui-icon-arrow-r ui-corner-all ui-btn-icon-right ui-btn-right">
+                Submit
+            </a>
+        </div><!-- /footer -->
+    </div><!-- /page -->
+</body>
 </html>

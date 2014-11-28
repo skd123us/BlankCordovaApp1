@@ -100,9 +100,11 @@
   <ItemGroup>
     <Folder Include="images\" />
     <Content Include="css\jquery.mobile-1.4.4.min.css" />
+    <Content Include="css\platform.css" />
     <Content Include="merges\android\scripts\android2.3-jscompat.js" />
     <Content Include="merges\android\scripts\platformOverrides.js" />
-    <Folder Include="merges\ios\" />
+    <Content Include="merges\ios\css\platform.css" />
+    <Content Include="merges\ios\scripts\platform.js" />
     <Content Include="merges\windows8\scripts\platformOverrides.js" />
     <Content Include="merges\windows8\scripts\winstore-jscompat.js" />
     <Folder Include="merges\wp8\" />
@@ -120,6 +122,40 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="index.html" />
+    <Content Include="plugins\org.apache.cordova.device\.fetch.json" />
+    <Content Include="plugins\org.apache.cordova.device\CONTRIBUTING.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\de\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\es\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\fr\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\it\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\ja\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\ko\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\pl\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\ru\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\doc\zh\index.md" />
+    <Content Include="plugins\org.apache.cordova.device\LICENSE" />
+    <Content Include="plugins\org.apache.cordova.device\NOTICE" />
+    <Content Include="plugins\org.apache.cordova.device\package.json" />
+    <Content Include="plugins\org.apache.cordova.device\plugin.xml" />
+    <Content Include="plugins\org.apache.cordova.device\README.md" />
+    <Content Include="plugins\org.apache.cordova.device\RELEASENOTES.md" />
+    <Content Include="plugins\org.apache.cordova.device\src\android\Device.java" />
+    <Content Include="plugins\org.apache.cordova.device\src\blackberry10\index.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\browser\DeviceProxy.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\firefoxos\DeviceProxy.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\ios\CDVDevice.h" />
+    <Content Include="plugins\org.apache.cordova.device\src\ios\CDVDevice.m" />
+    <Content Include="plugins\org.apache.cordova.device\src\tizen\DeviceProxy.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\ubuntu\device.cpp" />
+    <Content Include="plugins\org.apache.cordova.device\src\ubuntu\device.h" />
+    <Content Include="plugins\org.apache.cordova.device\src\ubuntu\device.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\windows8\DeviceProxy.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\windows\DeviceProxy.js" />
+    <Content Include="plugins\org.apache.cordova.device\src\wp\Device.cs" />
+    <Content Include="plugins\org.apache.cordova.device\tests\plugin.xml" />
+    <Content Include="plugins\org.apache.cordova.device\tests\tests.js" />
+    <Content Include="plugins\org.apache.cordova.device\www\device.js" />
     <Content Include="scripts\frameworks\jquery-1.11.1.min.js" />
     <Content Include="scripts\frameworks\jquery.mobile-1.4.4.min.js" />
     <Content Include="scripts\index.js" />
