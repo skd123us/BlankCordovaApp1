@@ -54,18 +54,16 @@
 	        }
 	    });
 
-        function onDeviceReady() {
+        $(document).on('deviceready', function() {
             var iOS7 = window.device
                 && window.device.platform
                 && window.device.platform.toLowerCase() == "ios"
                 && parseFloat(window.device.version) >= 7.0;
-            if(iOS7) {
+            alert(iOS7);
+            if (iOS7) {
                 document.write('<style type="text/css">body{-webkit-transform: translate3d(0,20px,0)}</style>');
             }
-        }
-
-
-        document.addEventListener('deviceready', onDeviceReady, false);
+        });
 
 	</script>
 </head>
