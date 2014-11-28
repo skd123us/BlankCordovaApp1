@@ -100,7 +100,6 @@
   <ItemGroup>
     <Folder Include="images\" />
     <Content Include="css\jquery.mobile-1.4.4.min.css" />
-    <Content Include="css\platform.css" />
     <Content Include="merges\android\scripts\android2.3-jscompat.js" />
     <Content Include="merges\android\scripts\platformOverrides.js" />
     <Content Include="merges\ios\css\platform.css" />
