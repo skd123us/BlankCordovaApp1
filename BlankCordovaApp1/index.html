@@ -55,7 +55,11 @@
 	    });
 
         function onDeviceReady() {
-            if(navigator.userAgent.match(/iPhone OS 7/)) {
+            var iOS7 = window.device
+                && window.device.platform
+                && window.device.platform.toLowerCase() == "ios"
+                && parseFloat(window.device.version) >= 7.0;
+            if(iOS7) {
                 document.write('<style type="text/css">body{-webkit-transform: translate3d(0,20px,0)}</style>');
             }
         }
